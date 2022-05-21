@@ -14,7 +14,7 @@ app.use('/views', express.static('public'))
 app.use('/views/*', express.static('public'))
 app.use('/', express.static('public'))
 
-const DBconnection =`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.ddt01.mongodb.net/test`
+const DBconnection =`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.ddt01.mongodb.net/Tasks`
 
 app.get('/',(req,res)=>{
 
