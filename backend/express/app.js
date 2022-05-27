@@ -4,6 +4,7 @@ const mongoose=require('mongoose')
 const cors =require('cors')
 const path = require('path')
 const app = express()
+require('dotenv').config()
 const { testroute, getalltasks, posttask, deletetask,patchtask}=require('./controllers/tasks.controller')
 
 
@@ -13,7 +14,7 @@ app.use('/views', express.static('public'))
 app.use('/views/*', express.static('public'))
 app.use('/', express.static('public'))
 
-
+const DBconnection =`mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.ddt01.mongodb.net/Tasks`
 
 app.get('/',(req,res)=>{
 
@@ -50,7 +51,7 @@ app.delete('/api/deletetask/:id',deletetask)
 
 
 
-mongoose.connect('mongodb://localhost:27017/tasks',{useNewUrlParser:true,useunifiedtopology:true}).
+mongoose.connect(DBconnection,{useNewUrlParser:true,useunifiedtopology:true}).
 then(()=>{
     console.log('connected succesfully')
     app.listen(3000,()=>{
