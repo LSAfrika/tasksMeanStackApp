@@ -9,12 +9,12 @@ export class LoginGuard implements CanActivateChild {
   constructor(private router:Router){}
   canActivateChild() {
 
-      this.router.navigateByUrl('/views')
-      setTimeout(() => {
+      // this.router.navigateByUrl('/views')
+      // setTimeout(() => {
         
-        alert('please log in')
-      }, 2000);
-    return false;
+      //   alert('please log in')
+      // }, 2000);
+    return true;
   }
   
 }
