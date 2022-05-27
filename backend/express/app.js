@@ -6,7 +6,7 @@ const path = require('path')
 const app = express()
 require('dotenv').config()
 const { testroute, getalltasks, posttask, deletetask,patchtask}=require('./controllers/tasks.controller')
-
+const { signup, signin, signout } = require('./controllers/auth.controller')
 
 app.use(cors())
 app.use(express.json());  
@@ -42,6 +42,12 @@ app.post('/api/posttask',posttask)
 app.patch('/api/patchtask/:id',patchtask)
 
 app.delete('/api/deletetask/:id',deletetask)
+
+
+// auth routes
+app.post('/api/login',signin)
+app.post('/api/signup',signup)
+app.post('/api/logout',signout)
 
 
 

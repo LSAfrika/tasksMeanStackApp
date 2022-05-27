@@ -8,8 +8,13 @@ import { Observable } from 'rxjs';
 export class LoginGuard implements CanActivateChild {
   constructor(private router:Router){}
   canActivateChild() {
-    //  this.router.navigateByUrl('/views')
-    return true;
+
+      this.router.navigateByUrl('/views')
+      setTimeout(() => {
+        
+        alert('please log in')
+      }, 2000);
+    return false;
   }
   
 }
