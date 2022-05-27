@@ -1,0 +1,24 @@
+<div class="w-full h-screen top-1 fixed z-50 bg-gradient-to-b from-blue-600 to-blue-400 flex flex-col justify-center items-center">
+
+    <div *ngIf="login" class="w-[80%] h-2/3 flex px-2 flex-col justify-start bg-red-400  items-center text-white">
+        <h1 class="text-3xl font-bold">Tasks</h1>
+    <h1 class="font-semibold text-lg  mt-4 ">please log in</h1>
+    <input type="text"placeholder="email" class="w-[85%] italic focus:not-italic  text-slate-700 rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
+    <input type="password"placeholder="password" class="w-[85%] italic focus:not-italic text-slate-700  rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
+        <button class="w-fit px-7 mt-5 p-1 bg-blue-400 rounded-sm">log in</button>
+        <p class="mb-10 mt-auto">don't have an account? <span (click)="togglelogin()" class="font-bold text-lg text-blue-200 hover:cursor-pointer">register</span></p>
+    </div>
+
+    <div *ngIf="!login" class="w-[80%] h-2/3 flex px-2 flex-col justify-start bg-red-400  items-center text-white">
+        <h1 class="text-3xl font-bold">Tasks</h1>
+    <h1 class="font-semibold text-lg  mt-4 ">please log in</h1>
+    <input type="text"placeholder="email" class="w-[85%] italic focus:not-italic  text-slate-700 rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
+    <input type="password"placeholder="enter password" class="w-[85%] italic focus:not-italic text-slate-700  rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
+    <input type="password"placeholder="re-enter password" class="w-[85%] italic focus:not-italic text-slate-700  rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
+        <button class="w-fit px-7 mt-5 p-1 bg-blue-400 rounded-sm">sign up</button>
+        <p class="mb-10 mt-auto"> have an account? <span (click)="togglelogin()" class="font-bold text-lg text-blue-200 hover:cursor-pointer">login</span></p>
+    </div>
+
+</div>
+<router-outlet></router-outlet>
+
