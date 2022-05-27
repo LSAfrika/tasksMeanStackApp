@@ -1,4 +1,5 @@
 const taskmodel = require('../models/todo.model')
+const mongoose=require('mongoose')
 
 
 exports.testroute = async(req,res)=>{
@@ -31,19 +32,27 @@ exports.posttask =async(req,res)=>{
     try {
         const data = req.body
         console.log('data: ',data);
-       const tasktosave = new taskmodel(data)
+       const tasktosave = new taskmodel(
+           {task:data.task
+        // ,_id:new mongoose.Types.ObjectId()
+    })
 console.log('task to be saved: ',tasktosave);
-   const result =await tasktosave.save()
-   console.log(result);
-   returnresult ={
-       task:result.task,
-       id:result._id
-   }
+    const result =await tasktosave.save()
     
+
+        console.log(result);
+        returnresult ={
+            task:result.task,
+            id:result._id,
+            createdAt:result.createdAt,
+            updatedAt:result.updatedAt
+        }
+    
+        
 await res.send(returnresult)
         
     } catch (error) {
-        res.send(error);
+        res.send(error.message);
         
     }
     
@@ -55,11 +64,11 @@ exports.patchtask =async(req,res)=>{
         const reqtask = req.body.task
         console.log('task received: ',reqtask);
 
-        const doc = await taskmodel.findByIdAndUpdate(id,{task:reqtask.task})
+        const doc = await taskmodel.findOneAndUpdate({_id:id},{task:reqtask})
         console.log('updated succesfuly',doc)
         res.send(doc)
     } catch (error) {
-        console.log('error: ',error)
+        console.log('error: ',error.message)
     }
 }
 

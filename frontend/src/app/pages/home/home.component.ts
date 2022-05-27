@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
 
   }
   createupdatetask(){
-    if(this.newtask){this.addtask()}
-    if(!this.newtask){this.updatetask()}
+    if(this.newtask===true){this.addtask()}
+    if(this.newtask===false){this.updatetask()}
 
   }
 

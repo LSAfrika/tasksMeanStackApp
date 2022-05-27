@@ -10,7 +10,7 @@
 <div class="w-[90%] py-10 h-fit md:w-[55%] bg-white font-semibold rounded-md flex flex-col items-center justify-start pt-5">
     
     <div *ngIf="api.list.length===0" class="uppercase relative bg-blue-700 text-white mt-auto mb-auto rounded-md px-5 py-2 ">create a new task    </div>
-    <div *ngIf="api.list.length>0;" class="uppercase w-full flex flex-col justify-start items-center "> 
+    <div *ngIf="api.list.length>0;" class=" w-full flex flex-col justify-start items-center "> 
     <div *ngFor="let task of api.list; let i=index" class="w-[80%]  p-2 flex  flex-row justify-center gap-x-2 items-center  ">
         <div class="text-slate-800 text-lg font-normal w-[70%] border-b-2 border-blue-500/10 ">{{task.task}}</div>
     
