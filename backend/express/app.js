@@ -8,7 +8,7 @@ require('dotenv').config()
 const { testroute, getalltasks, posttask, deletetask,patchtask}=require('./controllers/tasks.controller')
 
 
-app.use(cors())
+app.use(cors()) 
 app.use(express.json());  
 app.use('/views', express.static('public'))
 app.use('/views/*', express.static('public'))
