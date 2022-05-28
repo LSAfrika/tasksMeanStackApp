@@ -37,7 +37,7 @@ export class ApiService {
     return this.http.get<Task[]>(this.baseurl+'/gettasks')
    }
    updatetask(task:Task){
-     return this.http.patch(this.baseurl+`/patchtask/${task.id}`,{task})
+     return this.http.patch(this.baseurl+`/patchtask/${task.id}`,task)
      
    }
 
