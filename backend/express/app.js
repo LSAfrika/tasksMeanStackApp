@@ -5,7 +5,8 @@ const cors =require('cors')
 const path = require('path')
 const app = express()
 require('dotenv').config()
-const { testroute, getalltasks, posttask, deletetask,patchtask}=require('./controllers/tasks.controller')
+const authverifiction= require('./middleware/auth.middleware')
+const { testroute, getalltasks, posttask, deletetask,patchtask,getusertasks}=require('./controllers/tasks.controller')
 const { signup, signin, signout } = require('./controllers/auth.controller')
 
 app.use(cors())
@@ -36,16 +37,17 @@ app.get('/api/test',(req,res)=>{
 app.get('/api/tasks',testroute)
 
 app.get('/api/gettasks',getalltasks)
+app.get('/api/gettasks/:id',getusertasks)
 
-app.post('/api/posttask',posttask)
+app.post('/api/posttask',authverifiction,posttask)
 
-app.patch('/api/patchtask/:id',patchtask)
+app.patch('/api/patchtask/:id',authverifiction,patchtask)
 
-app.delete('/api/deletetask/:id',deletetask)
+app.delete('/api/deletetask/:id',authverifiction,deletetask)
 
 
 // auth routes
-app.post('/api/login',signin)
+app.post('/api/signin',signin)
 app.post('/api/signup',signup)
 app.post('/api/logout',signout)
 
