@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+ 
+  constructor(private router:Router,public ui:UiService) { }
 
   ngOnInit(): void {
   }
+
+  loginpage(){
+    this.router.navigateByUrl('/views')
+  }
+ 
 
 }

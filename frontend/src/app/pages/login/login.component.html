@@ -3,9 +3,12 @@
     <div *ngIf="login" class="w-[80%] h-2/3 flex px-2 flex-col justify-start  items-center text-white">
         <h1 class="text-5xl font-bold">Tasks</h1>
     <h1 class=" text-lg  mt-4    font-thin ">please log in</h1>
-    <input type="text"placeholder="email" class="w-[85%] italic focus:not-italic  text-slate-700 rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
-    <input type="password"placeholder="password" class="w-[85%] italic focus:not-italic text-slate-700  rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
-        <button class="w-fit px-7 mt-5 p-1 bg-blue-400 rounded-sm">log in</button>
+    <input [(ngModel)]="email"  type="text"placeholder="email" class="w-[85%] italic focus:not-italic  text-slate-700 rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
+    <input [(ngModel)]="password" type="password"placeholder="password" class="w-[85%] italic focus:not-italic text-slate-700  rounded-sm py-1 px-2 focus:outline-none outline-blue-500 mt-4">
+        <button  (click)="Applogin()" class="w-fit px-7 mt-5 p-1 bg-blue-400 rounded-sm">log in</button>
+
+        <p class="mb-15 mt-auto"><span routerLink="/views/tasks" class="font-semibold text-lg text-blue-100 hover:cursor-pointer">view Tasks</span></p>
+        
         <p class="mb-10 mt-auto">don't have an account? <span (click)="togglelogin()" class="font-bold text-lg text-blue-200 hover:cursor-pointer">register</span></p>
     </div>
 

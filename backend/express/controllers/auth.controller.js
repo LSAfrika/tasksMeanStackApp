@@ -8,9 +8,10 @@ exports.signin= async (req,res,next)=>{
 
     try {
         const {email,password}=req.body
+        console.log(email,password);
         const finduser = await usermodel.findOne({email:email})
         if(!finduser){
-          return  res.status(404).send({message: 'email/password mismatch'})
+          return  res.status(404).send({message: 'please check email and password'})
         }
          console.log(finduser)
          const passwordcompare= await bcrypt.compare(password, finduser.password)
