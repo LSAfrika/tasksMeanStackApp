@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders  } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Task} from '../model/task'
+import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +12,7 @@ export class ApiService {
   id=''
   index=0
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient,private auth:AuthService) {
 
     // this.hello()
     this.fetchtasks()
@@ -31,7 +32,9 @@ export class ApiService {
    }
 
    posttask(task:string){
-   return this.http.post<Task>(this.baseurl+'/posttask',{task})}
+    const headers = new HttpHeaders();
+    headers.set('Authorization', `Bearer ${this.auth.token}`);
+   return this.http.post<Task>(this.baseurl+'/posttask',{task},{headers: headers})}
 
    fetchtasks():Observable<Task[]>{
     return this.http.get<Task[]>(this.baseurl+'/gettasks')

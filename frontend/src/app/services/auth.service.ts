@@ -14,6 +14,7 @@ export class AuthService {
   password=''
   email=''
   userid=''
+  token=''
   constructor(private http:HttpClient,private router:Router) { }
 
 
@@ -28,7 +29,7 @@ export class AuthService {
 
   verifytoken(token:any){
     console.log('token from lohin authservice: ',token);
-    
+    this.token=token
     const result:any=jwt_decode(token);
     this.userid=result.id
     console.log(result);

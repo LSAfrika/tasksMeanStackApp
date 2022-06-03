@@ -10,7 +10,9 @@ export class UiService {
   constructor() { }
 
   togglemodal(){
+    
     this.viewmodal=!this.viewmodal
+    console.log('view/close modal',this.viewmodal);
   }
   togglemenu(){
     console.log('click fired from auth service');
