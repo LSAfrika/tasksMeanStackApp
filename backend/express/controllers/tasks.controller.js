@@ -15,7 +15,8 @@ exports.getalltasks =async(req,res)=>{
         const formatresult= result.map(resdata=>{
             const finaldata ={
                 task:resdata.task,
-                id:resdata._id
+                id:resdata._id,
+                ownerid:resdata.ownerid
             }
 
             return finaldata
@@ -27,13 +28,27 @@ exports.getalltasks =async(req,res)=>{
     }
 }
 
+exports.getusertasks = async (req,res)=>{
+    try {
+        userid=req.params.id
+     const userdata= await   taskmodel.find({ownerid:userid})
+     if(userdata.length===0){
+         return res.send({message:"no user tasks found",userdata})
+     }
+     res.status(200).send({userdata})
+        
+    } catch (error) {
+        res.status(500).send({errormessage:error.message})
+    }
+}
+
 exports.posttask =async(req,res)=>{
 
     try {
         const data = req.body
-        console.log('data: ',data);
+      //  console.log('data: ',data);
        const tasktosave = new taskmodel(
-           {task:data.task
+           {task:data.task,ownerid:data.ownerid 
         // ,_id:new mongoose.Types.ObjectId()
     })
 console.log('task to be saved: ',tasktosave);

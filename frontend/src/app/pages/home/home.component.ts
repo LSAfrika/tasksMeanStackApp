@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
 import {Task} from '../../model/task'
 
@@ -13,10 +14,10 @@ export class HomeComponent implements OnInit {
 
   
   task=''
-  fetchedtask:Task={task:'',id:''};
+  fetchedtask:Task={task:'',id:'',ownerid:''};
   newtask=true
   fetchedtaskindex=0
-  constructor(public api:ApiService,public ui:UiService) { }
+  constructor(public api:ApiService,public ui:UiService,public auth:AuthService) { }
 
   ngOnInit(): void {
     this.api.fetchtasks().subscribe(res=>{
@@ -61,7 +62,7 @@ export class HomeComponent implements OnInit {
  updatetask(){
   
  const data = {id:this.fetchedtask.id,
-task:this.task
+task:this.task,ownerid:this.fetchedtask.ownerid
 }
  console.log(data);
  
