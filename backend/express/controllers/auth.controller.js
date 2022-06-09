@@ -49,9 +49,9 @@ exports.signup= async (req,res,next)=>{
         if(finduser){
           return  res.status(409).send({message: 'email already exists'})
         }
-        // if(password!==reenteredpassword){
-        //     return res.status(500).send('password are not similar')
-        // }
+        if(password!==reenteredpassword){
+            return res.status(500).send('password are not similar')
+        }
 
        const hash=await bcrypt.hash(password,10)
 

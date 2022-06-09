@@ -9,7 +9,7 @@ const authverifiction= require('./middleware/auth.middleware')
 const { testroute, getalltasks, posttask, deletetask,patchtask,getusertasks}=require('./controllers/tasks.controller')
 const { signup, signin, signout } = require('./controllers/auth.controller')
 
-app.use(cors())
+app.use(cors()) 
 app.use(express.json());  
 app.use('/views', express.static('public'))
 app.use('/views/*', express.static('public'))

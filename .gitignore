@@ -3,6 +3,7 @@
 /backend/express/.env
 
 /backend/express/node_modules
+/backend/express/public
 /frontend/node_modules
 =======
 /backend/express/node_modules
