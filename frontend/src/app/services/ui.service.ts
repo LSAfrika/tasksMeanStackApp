@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class UiService {
 
   viewmodal=false
-  hidden=true
+  ishidden=true
   constructor() { }
 
   togglemodal(){
@@ -17,6 +17,6 @@ export class UiService {
   togglemenu(){
     console.log('click fired from auth service');
     
-    this.hidden=!this.hidden
+    this.ishidden=!this.ishidden
   }
 }

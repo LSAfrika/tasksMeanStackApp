@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       this.password=''
       this.email=''
-      this.ui.togglemenu()
+      // this.ui.togglemenu()
       const token =  localStorage.setItem('token',res.sigintoken)
      this.auth.verifytoken(res.sigintoken)
       

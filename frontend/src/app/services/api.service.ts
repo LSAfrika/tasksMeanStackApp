@@ -33,8 +33,12 @@ export class ApiService {
 
    posttask(task:string){
     const headers = new HttpHeaders();
+    console.log('token attached to request: ',this.auth.token);
+    
     headers.set('Authorization', `Bearer ${this.auth.token}`);
-   return this.http.post<Task>(this.baseurl+'/posttask',{task},{headers: headers})}
+   return this.http.post<Task>(this.baseurl+'/posttask',{task},{
+    headers: new HttpHeaders().set('Authorization',`Bearer ${this.auth.token}` )
+})}
 
    fetchtasks():Observable<Task[]>{
     return this.http.get<Task[]>(this.baseurl+'/gettasks')

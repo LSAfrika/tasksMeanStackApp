@@ -9,6 +9,7 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class NavComponent implements OnInit {
 
+  authstate='login'
  
   constructor(private router:Router,public ui:UiService) { }
 
@@ -16,6 +17,7 @@ export class NavComponent implements OnInit {
   }
 
   loginpage(){
+    this.ui.ishidden=true
     this.router.navigateByUrl('/views')
   }
  

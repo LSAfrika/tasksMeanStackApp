@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,14 +9,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'todoexpress';
-  constructor(private activroute:Router){
-    const route = this.activroute.url
-    
-   
-    //  if(route==='/'){
-    //    activroute.navigateByUrl('/views')
-    //  }
+  constructor(private auth:AuthService,private router:Router){
+ 
+      const token = localStorage.getItem('token')
+      console.log('app component token : ',token);
       
+
+      if(token)
+      this.auth.silentlogin(token)
    
 
   }

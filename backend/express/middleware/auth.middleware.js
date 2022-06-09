@@ -6,10 +6,10 @@ module.exports=(req,res,next)=>{
 
         const reqtoken=req.headers.authorization
 
-       // console.log('headers token: ',reqtoken);
+        console.log('headers token: ',reqtoken);
 
         const token = reqtoken.split(' ')[1]
-      //  console.log('Actual token: ',token);
+        console.log('Actual token: ',token);
 
 
 
@@ -25,6 +25,7 @@ module.exports=(req,res,next)=>{
     next()
 
     } catch (error) {
+      console.log(error.message);
        return res.status(401).send({message:'auth failed'})
     }
 

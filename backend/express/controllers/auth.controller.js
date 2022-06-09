@@ -23,12 +23,14 @@ exports.signin= async (req,res,next)=>{
 
          const payload ={
              id:finduser._id,
-             email:finduser.email
+             email:finduser.email,
+             exp: Date.now()  + (60 * 60*1000)
          }
-         const options ={
-            expiresIn:'1h'
-         }
-       const sigintoken=  JWT.sign(payload,process.env.JWT_KEY,options)
+        
+         console.log(payload.exp);
+         console.log(Date.now())
+         
+       const sigintoken=  JWT.sign(payload,process.env.JWT_KEY)
           res.status(200).send({sigintoken})
 
         

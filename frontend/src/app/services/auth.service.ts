@@ -39,12 +39,13 @@ export class AuthService {
 
   silentlogin(token:string){
     const result:any=jwt_decode(token);
-    console.log(result);
+    console.log('decoded token: ',result);
    
     
-    const date =Date.now().toString()
-    const compareddate =date.substring(0,10)
-    const currentdate =parseInt(compareddate)
+    // const date =Date.now().toString()
+    // const compareddate =date.substring(0,10)
+    // const currentdate =parseInt(compareddate)
+    const currentdate= Date.now()
     console.log('ctokentime:',currentdate);
     
     console.log('ttokentime:',result.exp);
@@ -52,9 +53,14 @@ export class AuthService {
     
     if(result.exp>currentdate ){
       setTimeout(() => {
-        
+        this.userid=result.id
+        this.token=token
         this.router.navigateByUrl('/views/tasks')
       }, 2000);
+
+    }else{
+      localStorage.removeItem('token')
+      this.router.navigateByUrl('/views')
 
     }
     
