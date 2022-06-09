@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
@@ -9,14 +10,20 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class NavComponent implements OnInit {
 
-  authstate='login'
  
-  constructor(private router:Router,public ui:UiService) { }
+ 
+  constructor(private router:Router,public ui:UiService,private auth:AuthService) { }
 
   ngOnInit(): void {
   }
 
   loginpage(){
+
+    if(this.ui.authtext==='log out'){
+      this.auth.logout()
+
+    }
+
     this.ui.ishidden=true
     this.router.navigateByUrl('/views')
   }

@@ -17,8 +17,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     const token:any =localStorage.getItem('token')
     console.log('login copmonent token: ',token);
-    
-    this.auth.silentlogin(token)
+    if(token){
+
+      this.auth.silentlogin(token)  
+    }
   }
 
   togglelogin(){

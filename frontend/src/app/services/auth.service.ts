@@ -15,6 +15,7 @@ export class AuthService {
   email=''
   userid=''
   token=''
+  splashscreen=true
   constructor(private http:HttpClient,private router:Router) { }
 
 
@@ -55,6 +56,7 @@ export class AuthService {
       setTimeout(() => {
         this.userid=result.id
         this.token=token
+        this.splashscreen=false
         this.router.navigateByUrl('/views/tasks')
       }, 2000);
 
@@ -66,5 +68,10 @@ export class AuthService {
     
 
 
+  }
+
+  logout(){
+    localStorage.removeItem('token')
+    this.router.navigateByUrl('/views')
   }
 }

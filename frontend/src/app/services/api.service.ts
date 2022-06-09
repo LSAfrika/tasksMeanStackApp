@@ -44,11 +44,11 @@ export class ApiService {
     return this.http.get<Task[]>(this.baseurl+'/gettasks')
    }
    updatetask(task:Task){
-     return this.http.patch(this.baseurl+`/patchtask/${task.id}`,task)
+     return this.http.patch(this.baseurl+`/patchtask/${task.id}`,task,{headers: new HttpHeaders().set('Authorization',`Bearer ${this.auth.token}`)})
      
    }
 
    deletetask(id:string){
-     return this.http.delete(this.baseurl+`/deletetask/${id}`)
+     return this.http.delete(this.baseurl+`/deletetask/${id}`,{headers: new HttpHeaders().set('Authorization',`Bearer ${this.auth.token}`)})
    }
 }

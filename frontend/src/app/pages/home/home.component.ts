@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
      this.api.list=[...this.api.list,res]
      this.task=''
   },err=>{
-    console.log(err);
+    console.log(err.message);
     
   }
   )
