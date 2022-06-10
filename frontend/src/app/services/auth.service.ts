@@ -12,6 +12,7 @@ export class AuthService {
 
   baseurl='http://localhost:3000/api'
   password=''
+  reenteredpassword=''
   email=''
   userid=''
   token=''
@@ -26,6 +27,19 @@ export class AuthService {
      email: this.email
     }
     return this.http.post(this.baseurl+'/signin',credentials)
+  }
+
+  signup(){
+
+   
+
+    const newuser={
+      password:this.password,
+      reenteredpassword:this.reenteredpassword,
+      email:this.email
+    }
+    return this.http.post(this.baseurl+'/signup',newuser)
+
   }
 
   verifytoken(token:any){

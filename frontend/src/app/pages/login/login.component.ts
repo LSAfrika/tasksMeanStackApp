@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   email=''
   password=''
+  reenteredpassword=''
   login=true
   constructor(public auth:AuthService,private router:Router,private ui:UiService) { }
 
@@ -52,6 +53,42 @@ export class LoginComponent implements OnInit {
     },err=>{
       console.log('login error: ',err.error);
       alert(err.error.message)
+      
+    })
+
+  }
+
+  appsignup(){
+
+    if(this.password.trim().length===0 ||this.reenteredpassword.trim().length===0||this.email.trim().length===0){
+      alert('please fill all the fields')
+      return
+    }
+    
+    
+    if(this.password!==this.reenteredpassword){
+      alert('password missmatch')
+      return
+    }
+    if(this.password.trim().length<6 ||this.reenteredpassword.trim().length<6){
+      alert('password cant be less than 6 charachters')
+      return
+    }
+
+    this.auth.password=this.password
+    this.auth.reenteredpassword=this.reenteredpassword
+    this.auth.email=this.email
+    this.auth.signup().subscribe(res=>{
+      console.log('signup response: ',res);
+      
+    },err=>{
+      alert('email already in use')
+      this.auth.password=this.password=this.auth.reenteredpassword=this.reenteredpassword= this.auth.email=this.email=''
+      
+        
+    
+
+      console.log('signup error: ',err.error.message);
       
     })
 

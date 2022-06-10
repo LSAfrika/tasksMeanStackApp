@@ -1,14 +1,14 @@
-<div class="bg-slate-300 w-full relative z-40 flex items-center justify-start  h-screen flex-col">
+<div class="bg-slate-300 w-full relative z-40 flex items-center justify-start  h-screen overflow-y-scroll overflow-x-hidden flex-col">
   <app-nav></app-nav>
   
 <!-- form -->
-    <div *ngIf="auth.userid!==''" class="w-[90%] mx-6 pb-4 mt-[70px] md:w-[55%] p-2 bg-white mb-4 rounded-sm flex justify-center items-center  gap-x-2 h-fit ">
-    <input [(ngModel)]="task" type="text" placeholder="add a new task" class=" pl-3 p-2 outline-none italic focus:not-italic text-slate-900 bg-white w-[60%] border-blue-600 border-b-2">
+    <div *ngIf="auth.userid!==''" class="w-[90%] mx-6 pb-4 mt-[70px] md:w-[55%] lg:w-[40%] p-2 bg-white mb-4 rounded-sm flex justify-center items-center  gap-x-2 h-fit ">
+    <input [(ngModel)]="task" type="text" placeholder="add a new task" class="w-[60%]  pl-3 p-2 outline-none italic focus:not-italic text-slate-900 bg-white  border-blue-600 border-b-2">
      <button (click)="createupdatetask()" class="px-4 text-sm bg-blue-600 rounded-md text-white py-1 mt-3 mb-auto ">submit</button>
 </div>
 <div *ngIf="auth.userid===''" class="mt-[70px] h-[70px] bg-red-200"></div>
 
-<div class="w-[90%] py-10 h-fit md:w-[55%] bg-white font-semibold rounded-md flex flex-col items-center justify-start pt-5">
+<div class="w-[90%] py-10 h-fit md:w-[55%] lg:w-[40%] bg-white font-semibold rounded-md flex flex-col items-center justify-start pt-5">
     
     <div *ngIf="api.list.length===0" class="uppercase relative bg-blue-700 text-white mt-auto mb-auto rounded-md px-5 py-2 ">create a new task    </div>
     <div *ngIf="api.list.length>0;" class=" w-full flex flex-col justify-start items-center "> 
@@ -21,7 +21,8 @@
     <svg *ngIf="task.ownerid===auth.userid" (click)="deletetask(i,task.id)" xmlns="http://www.w3.org/2000/svg" class="h-[30px] w-[30px] hover:cursor-pointer " viewBox="0 0 20 20" fill="#ef4343">
         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
       </svg>
-
+<div *ngIf="task.ownerid!==auth.userid" class="h-[30px] w-[30px] opacity-0"></div>
+<div *ngIf="task.ownerid!==auth.userid" class="h-[30px] w-[30px] opacity-0"></div>
 
     </div>
         

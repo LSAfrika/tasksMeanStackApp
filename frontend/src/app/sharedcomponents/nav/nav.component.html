@@ -6,7 +6,7 @@
           </svg>
     </div>
     <ul class="md:flex justify-between lg:justify-center px-10 items-center w-1/4   ml-auto text-lg hidden ">
-        <li class="lg:m-2"><a routerLink="/views">login</a></li>
+        <li (click)="loginpage()" class="lg:m-2 hover:cursor-pointer"><a >{{ui.authtext}}</a></li>
     </ul>
     
     </nav>
